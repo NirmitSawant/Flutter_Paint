@@ -5,7 +5,7 @@ Nostaglia max guaranteed(MS paint users)
 
 ## Features:
 - Change Color
-- Chnage Width 
+- Change Width 
 - Clear All 
 
 ## Screenshots:
