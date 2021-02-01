@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,7 +36,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<DrawingArea> points = [];
   Color selectedColor;
+  Color previousColor;
   double strokewidth;
+  double previouswidth;
 
   void selectColor() {
     showDialog(
@@ -48,6 +51,7 @@ class _HomePageState extends State<HomePage> {
             pickerColor: selectedColor,
             onColorChanged: (color) {
               setState(() {
+                previousColor = selectedColor;
                 selectedColor = color;
               });
             },
@@ -56,6 +60,9 @@ class _HomePageState extends State<HomePage> {
         actions: [
           FlatButton(
               onPressed: () {
+                if (previousColor != null && previousColor != selectedColor) {
+                  Fluttertoast.showToast(msg: "Color Changed");
+                }
                 Navigator.of(context).pop();
               },
               child: Text("close"))
@@ -167,6 +174,7 @@ class _HomePageState extends State<HomePage> {
                         value: strokewidth,
                         onChanged: (value) {
                           setState(() {
+                            previouswidth = strokewidth;
                             strokewidth = value;
                           });
                         },
@@ -179,6 +187,8 @@ class _HomePageState extends State<HomePage> {
                           onPressed: () {
                             setState(() {
                               points.clear();
+                              Fluttertoast.showToast(
+                                  msg: "Drawing Board Cleared");
                             });
                           }),
                     ],
