@@ -7,6 +7,7 @@ Nostaglia max guaranteed(MS paint users)
 - Change Color
 - Change Width 
 - Clear All 
+- Toast added after changes in color and screen clear
 
 ## Screenshots:
 
